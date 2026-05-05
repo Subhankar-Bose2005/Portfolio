@@ -686,29 +686,6 @@ footer span{font-style:italic;}
     <div><div class="hst-val">2027</div><div class="hst-key">Graduation</div></div>
   </div>
 
-  <!-- Hero Photo (right) — replace hero.jpg with your image file name -->
-  <div class="hero-img-wrap">
-    <div class="hero-img-frame">
-      <!-- 
-        TO ADD YOUR PHOTO:
-        1. Place your image in the same folder as this HTML file
-        2. Replace "hero.jpg" below with your actual image filename
-        3. The placeholder box will disappear automatically
-      -->
-      <img src="hero.jpg" alt="Subhankar Bose"
-           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
-           style="display:block;" />
-      <div class="hero-img-placeholder" style="display:none;">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-          <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
-        </svg>
-        <span>hero.jpg</span>
-      </div>
-    </div>
-    <div class="hero-img-label">
-      <span>●</span>&nbsp;Subhankar Bose · SRM IST
-    </div>
-  </div>
 
   <div class="hero-scroll">
     <div class="scroll-lbl">scroll</div>
@@ -740,11 +717,237 @@ footer span{font-style:italic;}
 
 <div class="divider"><div class="div-fill" id="d1"></div></div>
 
-<!-- ABOUT -->
+<!-- ═══════════════════════════════════════════
+     ABOUT SECTION — drop-in replacement
+     Uses hero.jpg as the photo placeholder
+     ═══════════════════════════════════════════ -->
+
+<!-- Extra styles — paste into your <style> block -->
+<style>
+/* ── About photo card ── */
+.about-photo-card{
+  display:flex;
+  align-items:center;
+  gap:2rem;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--r);
+  padding:1.75rem 2rem;
+  margin-bottom:2.5rem;
+  position:relative;
+  overflow:hidden;
+  transition:border-color .3s, background .3s;
+}
+.about-photo-card::before{
+  content:'';
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 100% at 0% 50%, rgba(232,169,58,.06), transparent);
+  pointer-events:none;
+}
+.about-photo-card:hover{
+  border-color:rgba(232,169,58,.2);
+  background:var(--surface2);
+}
+
+/* Photo frame */
+.about-photo-frame{
+  flex-shrink:0;
+  width:110px;
+  height:120px;
+  border-radius:10px;
+  overflow:hidden;
+  border:1px solid var(--border);
+  position:relative;
+  background:var(--surface2);
+}
+.about-photo-frame::after{
+  content:'';
+  position:absolute;inset:0;
+  box-shadow:inset 0 0 0 1px rgba(232,169,58,.12);
+  border-radius:10px;
+  pointer-events:none;
+}
+.about-photo-frame img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center top;
+  filter:grayscale(10%) contrast(1.04);
+  transition:filter .4s, transform .5s var(--ease);
+}
+.about-photo-card:hover .about-photo-frame img{
+  filter:grayscale(0%) contrast(1.08);
+  transform:scale(1.04);
+}
+/* placeholder */
+.about-photo-placeholder{
+  width:100%;height:100%;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:.4rem;
+  color:var(--text3);
+  font-family:'JetBrains Mono',monospace;font-size:.58rem;
+  letter-spacing:.06em;
+}
+.about-photo-placeholder svg{opacity:.3;}
+
+/* Photo text block */
+.about-photo-text{flex:1;min-width:0;}
+.about-photo-name{
+  font-family:'Clash Display',sans-serif;font-weight:700;
+  font-size:1.25rem;color:var(--text);letter-spacing:-.02em;
+  margin-bottom:.25rem;
+}
+.about-photo-role{
+  font-family:'JetBrains Mono',monospace;font-size:.68rem;
+  color:var(--amber);letter-spacing:.06em;margin-bottom:.75rem;
+}
+.about-photo-bio{
+  font-size:.86rem;color:var(--text2);line-height:1.75;
+}
+
+/* Responsive */
+@media(max-width:600px){
+  .about-photo-card{flex-direction:column;align-items:flex-start;}
+  .about-photo-frame{width:80px;height:88px;}
+}
+</style>
+
+<!-- ═══════════════════════════════════════════
+     ABOUT SECTION — drop-in replacement
+     Uses hero.jpg as the photo placeholder
+     ═══════════════════════════════════════════ -->
+
+<!-- Extra styles — paste into your <style> block -->
+<style>
+/* ── About photo card ── */
+.about-photo-card{
+  display:flex;
+  align-items:center;
+  gap:2rem;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--r);
+  padding:1.75rem 2rem;
+  margin-bottom:2.5rem;
+  position:relative;
+  overflow:hidden;
+  transition:border-color .3s, background .3s;
+}
+.about-photo-card::before{
+  content:'';
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 100% at 0% 50%, rgba(232,169,58,.06), transparent);
+  pointer-events:none;
+}
+.about-photo-card:hover{
+  border-color:rgba(232,169,58,.2);
+  background:var(--surface2);
+}
+
+/* Photo frame */
+.about-photo-frame{
+  flex-shrink:0;
+  width:150px;
+  height:165px;
+  border-radius:10px;
+  overflow:hidden;
+  border:1px solid var(--border);
+  position:relative;
+  background:var(--surface2);
+}
+.about-photo-frame::after{
+  content:'';
+  position:absolute;inset:0;
+  box-shadow:inset 0 0 0 1px rgba(232,169,58,.12);
+  border-radius:10px;
+  pointer-events:none;
+}
+.about-photo-frame img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center top;
+  filter:grayscale(10%) contrast(1.04);
+  transition:filter .4s, transform .5s var(--ease);
+}
+.about-photo-card:hover .about-photo-frame img{
+  filter:grayscale(0%) contrast(1.08);
+  transform:scale(1.04);
+}
+/* placeholder */
+.about-photo-placeholder{
+  width:100%;height:100%;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:.4rem;
+  color:var(--text3);
+  font-family:'JetBrains Mono',monospace;font-size:.58rem;
+  letter-spacing:.06em;
+}
+.about-photo-placeholder svg{opacity:.3;}
+
+/* Photo text block */
+.about-photo-text{flex:1;min-width:0;}
+.about-photo-name{
+  font-family:'Clash Display',sans-serif;font-weight:700;
+  font-size:1.25rem;color:var(--text);letter-spacing:-.02em;
+  margin-bottom:.25rem;
+}
+.about-photo-role{
+  font-family:'JetBrains Mono',monospace;font-size:.68rem;
+  color:var(--amber);letter-spacing:.06em;margin-bottom:.75rem;
+}
+.about-photo-bio{
+  font-size:.86rem;color:var(--text2);line-height:1.75;
+}
+
+/* Responsive */
+@media(max-width:600px){
+  .about-photo-card{flex-direction:column;align-items:flex-start;}
+  .about-photo-frame{width:110px;height:120px;}
+}
+</style>
+
+<!-- ─────────────────────────────── ABOUT HTML ─────────────────────────────── -->
 <section id="about">
   <div class="sw">
     <div class="eyebrow rev"><span class="eb-n">01</span><div class="eb-dash"></div><span class="eb-txt">About</span></div>
     <h2 class="sec-title rev">Who I <em>am</em></h2>
+
+    <!-- Photo + quick-bio card -->
+    <div class="about-photo-card rev">
+      <!-- Photo frame -->
+      <div class="about-photo-frame">
+        <!--
+          TO ADD YOUR PHOTO:
+          Place hero.jpg in the same folder as portfolio.html.
+          The placeholder disappears automatically once the image loads.
+        -->
+        <img
+          src="hero.jpg"
+          alt="Subhankar Bose"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+          style="display:block;"
+        />
+        <div class="about-photo-placeholder" style="display:none;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <circle cx="12" cy="8" r="4"/>
+            <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+          </svg>
+          <span>hero.jpg</span>
+        </div>
+      </div>
+
+      <!-- Quick-bio text -->
+      <div class="about-photo-text">
+        <div class="about-photo-name">Subhankar Bose</div>
+        <div class="about-photo-role">CS Engineering · SRM IST · CGPA 9.57</div>
+        <p class="about-photo-bio">
+          Hello! I'm Subhankar, a Computer Science Engineering student at SRM University with a deep-rooted passion for backend systems and machine intelligence. I thrive on solving complex problems and building applications that make a tangible impact.
+        </p>
+      </div>
+    </div>
+
+    <!-- Main two-column grid (unchanged) -->
     <div class="about-grid">
       <div class="rev-l">
         <div class="about-text">
@@ -781,6 +984,7 @@ footer span{font-style:italic;}
         </div>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -1085,15 +1289,15 @@ footer span{font-style:italic;}
       <div class="ach-card">
         <div class="card-wipe"></div>
         <div class="ach-icon">🚀</div>
-        <h4>Smart India Hackathon 2024</h4>
-        <p>Selected for internal college round among top teams nationwide</p>
+        <h4>Guidewire DevTrials 2026</h4>
+        <p>Selected in top 50 teams and till last phase of nationwide hackathon</p>
       </div>
-      <div class="ach-card">
-        <div class="card-wipe"></div>
-        <div class="ach-icon">📊</div>
-        <h4>CGPA 9.57 / 10</h4>
-        <p>Consistent academic excellence across B.Tech Computer Science</p>
-      </div>
+<div class="ach-card">
+  <div class="card-wipe"></div>
+  <div class="ach-icon">🏆</div>
+  <h4>SAP Certified - Backend Developer - ABAP Cloud</h4>
+  <p>Achieved certification with a perfect 100% score</p>
+</div>
       <div class="ach-card">
         <div class="card-wipe"></div>
         <div class="ach-icon">⚡</div>
